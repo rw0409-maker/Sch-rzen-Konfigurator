@@ -75,7 +75,7 @@
 :root {
   font-family: Arial, sans-serif;
   color: #292328;
-  background: #fff;
+  background: white;
 }
 
 * {
@@ -84,21 +84,21 @@
 
 body {
   margin: 0;
-  background: #fff;
+  background: white;
 }
 
 .wrap {
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
-  padding: 16px 10px 50px;
+  padding: 10px 8px 40px;
 }
 
-/* GROSSE VORSCHAU LINKS */
+/* GROSSE VORSCHAU LINKS, KOMPAKTE AUSWAHL RECHTS */
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 22px;
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  gap: 18px;
   align-items: start;
 }
 
@@ -118,7 +118,7 @@ body {
 
 .preview h2 {
   margin: 0 0 12px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .photo {
@@ -135,7 +135,7 @@ body {
   object-fit: contain;
 }
 
-/* DRUCKVORSCHAU AUF DER SCHÜRZE */
+/* PERSONALISIERUNG AUF DER SCHÜRZE */
 .print {
   position: absolute;
   top: 19%;
@@ -196,12 +196,12 @@ body {
 }
 
 .section {
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 .section h2 {
-  margin: 0 0 11px;
-  font-size: 16px;
+  margin: 0 0 10px;
+  font-size: 15px;
 }
 
 button,
@@ -212,10 +212,10 @@ input {
 button {
   cursor: pointer;
   border: 1px solid #e4d8da;
-  border-radius: 10px;
-  background: #fff;
+  border-radius: 9px;
+  background: white;
   color: #30252a;
-  padding: 9px 11px;
+  padding: 8px 10px;
 }
 
 button:hover {
@@ -236,23 +236,23 @@ input:focus-visible {
 .choices {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 6px;
 }
 
 .color-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  gap: 7px;
 }
 
 .color-tile {
   min-width: 0;
-  padding: 5px;
+  padding: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
-  font-size: 11px;
+  gap: 4px;
+  font-size: 10px;
 }
 
 .color-tile img {
@@ -260,7 +260,7 @@ input:focus-visible {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
-  border-radius: 7px;
+  border-radius: 6px;
 }
 
 .color-tile span {
@@ -271,54 +271,54 @@ input:focus-visible {
 .font-choice {
   flex: 1 1 42%;
   min-width: 0;
-  min-height: 74px;
+  min-height: 66px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 3px;
 }
 
 .font-sample {
-  font-size: 25px;
+  font-size: 23px;
   line-height: 1.2;
   text-align: center;
   overflow-wrap: anywhere;
 }
 
 .font-choice small {
-  font: 12px Arial, sans-serif;
+  font: 11px Arial, sans-serif;
 }
 
 .tiles {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  gap: 7px;
 }
 
 .tile {
   min-width: 0;
-  min-height: 88px;
-  padding: 7px 3px;
+  min-height: 82px;
+  padding: 6px 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  font-size: 11px;
+  gap: 4px;
+  font-size: 10px;
 }
 
 .tile img {
   display: block;
-  width: 65px;
+  width: 60px;
   max-width: 100%;
-  height: 65px;
+  height: 60px;
   object-fit: contain;
 }
 
 .tile img.line-image {
   width: 100%;
-  height: 32px;
+  height: 30px;
   object-fit: contain;
 }
 
@@ -331,14 +331,14 @@ input:focus-visible {
   display: block;
   width: 100%;
   border: 1px solid #ddd1d5;
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 9px;
+  padding: 11px;
 }
 
 .note,
 .help {
   color: #796e72;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.5;
 }
 
@@ -347,11 +347,11 @@ input:focus-visible {
 }
 
 .help {
-  margin: 7px 0 14px;
+  margin: 7px 0 13px;
 }
 
 .summary {
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.7;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
@@ -369,15 +369,14 @@ input:focus-visible {
   cursor: not-allowed;
 }
 
-/* BEI SCHMALEREN EINBETTUNGEN:
-   VORSCHAU BLEIBT LINKS UND GRÖSSER */
+/* BEI SCHMALEN SHOPIFY-EINBETTUNGEN */
 @media (max-width: 760px) {
   .wrap {
     padding: 8px 5px 30px;
   }
 
   .layout {
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
     gap: 10px;
   }
 
@@ -395,7 +394,7 @@ input:focus-visible {
   }
 
   .section h2 {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .color-grid,
@@ -443,115 +442,112 @@ input:focus-visible {
 
 <body>
 <main class="wrap">
+<div class="layout">
 
-  <div class="layout">
+  <!-- LINKS: GROSSE LIVE-VORSCHAU -->
+  <section class="panel preview">
+    <h2>Deine Live-Vorschau</h2>
 
-    <!-- LINKS: GROSSE LIVE-VORSCHAU -->
-    <section class="panel preview">
-      <h2>Deine Live-Vorschau</h2>
+    <div class="photo">
+      <img id="apron" alt="Deine Schürze">
 
-      <div class="photo">
-        <img id="apron" alt="Deine Schürze">
+      <div class="print" id="print">
+        <div class="print-name" id="previewName"></div>
 
-        <div class="print" id="print">
-          <div class="print-name" id="previewName"></div>
-
-          <div class="motif-area" id="motifArea">
-            <img
-              class="separator-image"
-              id="separator"
-              alt=""
-            >
-            <img
-              class="icon-image"
-              id="motif"
-              alt=""
-            >
-          </div>
-
-          <div class="print-wish" id="previewWish"></div>
+        <div class="motif-area" id="motifArea">
+          <img
+            class="separator-image"
+            id="separator"
+            alt=""
+          >
+          <img
+            class="icon-image"
+            id="motif"
+            alt=""
+          >
         </div>
-      </div>
 
-      <p class="note">
-        Unverbindliche Gestaltungsvorschau.
-        Druckposition und Größe können beim fertigen
-        Produkt abweichen.
+        <div class="print-wish" id="previewWish"></div>
+      </div>
+    </div>
+
+    <p class="note">
+      Unverbindliche Gestaltungsvorschau.
+      Druckposition und Größe können beim fertigen
+      Produkt abweichen.
+    </p>
+  </section>
+
+  <!-- RECHTS: PERSONALISIERUNG -->
+  <section class="panel">
+
+    <div class="section">
+      <h2>1. Schürzenfarbe</h2>
+      <div id="colors" class="color-grid"></div>
+    </div>
+
+    <div class="section">
+      <h2>2. Dein Name</h2>
+      <input
+        id="name"
+        class="field"
+        type="text"
+        value="Lieblingskoch"
+        maxlength="28"
+        placeholder="Dein Name"
+      >
+    </div>
+
+    <div class="section">
+      <h2>3. Schriftart</h2>
+      <div id="fonts" class="choices"></div>
+    </div>
+
+    <div class="section">
+      <h2>4. Druckfarbe</h2>
+      <div id="inks" class="choices"></div>
+    </div>
+
+    <div class="section">
+      <h2>5. Dein Icon (optional)</h2>
+      <div id="icons" class="tiles"></div>
+    </div>
+
+    <div class="section">
+      <h2>6. Trennlinie (optional)</h2>
+      <div id="lines" class="tiles"></div>
+    </div>
+
+    <div class="section">
+      <h2>7. Dein Wunschtext (optional)</h2>
+
+      <input
+        id="wish"
+        class="field"
+        type="text"
+        maxlength="60"
+        placeholder="Optionaler Wunschtext"
+      >
+
+      <p class="help">
+        Leer lassen, wenn kein Wunschtext gewünscht ist.
       </p>
-    </section>
 
-    <!-- RECHTS: PERSONALISIERUNG -->
-    <section class="panel">
+      <h2>Schriftart für deinen Wunschtext</h2>
+      <div id="wishFonts" class="choices"></div>
+    </div>
 
-      <div class="section">
-        <h2>1. Schürzenfarbe</h2>
-        <div id="colors" class="color-grid"></div>
-      </div>
+    <div class="section">
+      <h2>Deine Auswahl</h2>
+      <div id="summary" class="summary"></div>
 
-      <div class="section">
-        <h2>2. Dein Name</h2>
-        <input
-          id="name"
-          class="field"
-          type="text"
-          value="Lieblingskoch"
-          maxlength="28"
-          placeholder="Dein Name"
-        >
-      </div>
+      <button id="copy" type="button">
+        Für Etsy kopieren
+      </button>
+    </div>
 
-      <div class="section">
-        <h2>3. Schriftart</h2>
-        <div id="fonts" class="choices"></div>
-      </div>
-
-      <div class="section">
-        <h2>4. Druckfarbe</h2>
-        <div id="inks" class="choices"></div>
-      </div>
-
-      <div class="section">
-        <h2>5. Dein Icon (optional)</h2>
-        <div id="icons" class="tiles"></div>
-      </div>
-
-      <div class="section">
-        <h2>6. Trennlinie (optional)</h2>
-        <div id="lines" class="tiles"></div>
-      </div>
-
-      <div class="section">
-        <h2>7. Dein Wunschtext (optional)</h2>
-
-        <input
-          id="wish"
-          class="field"
-          type="text"
-          maxlength="60"
-          placeholder="Optionaler Wunschtext"
-        >
-
-        <p class="help">
-          Leer lassen, wenn kein Wunschtext gewünscht ist.
-        </p>
-
-        <h2>Schriftart für deinen Wunschtext</h2>
-        <div id="wishFonts" class="choices"></div>
-      </div>
-
-      <div class="section">
-        <h2>Deine Auswahl</h2>
-        <div id="summary" class="summary"></div>
-
-        <button id="copy" type="button">
-          Für Etsy kopieren
-        </button>
-      </div>
-
-    </section>
-
-  </div>
-
+  </section>
+</div>
 </main>
 
 <script>
@@ -856,7 +852,6 @@ function renderLines() {
 
     const label = document.createElement("span");
     label.textContent = prettyLabel(line);
-
     button.appendChild(label);
   });
 }
