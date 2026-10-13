@@ -1,36 +1,983 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Schürzen-Konfigurator – Vorschau</title><style>
-@font-face{font-family:'GetShow';src:url('https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Get_Show.ttf')}@font-face{font-family:'Mama';src:url('https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Mama.ttf')}@font-face{font-family:'Amatic';src:url('https://cdn.shopify.com/s/files/1/0761/4932/6151/files/AmaticSC-Bold.ttf')}@font-face{font-family:'Veneer';src:url('https://cdn.shopify.com/s/files/1/0761/4932/6151/files/VeneerThree.ttf')}@font-face{font-family:Scribblefun;src:url('https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Scribblefun.ttf')}@font-face{font-family:Wonderful;src:url('https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Stay_Wonderful_26d11ac1-acaf-43f5-b579-a17aeaaacc03.otf')}@font-face{font-family:Wintersnow;src:url('https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Wintersnow.otf')}@font-face{font-family:Jersey;src:url('https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Jersey_Distressed.otf')}
-:root{font-family:system-ui,Arial,sans-serif;color:#292328;background:#ffffff}*{box-sizing:border-box}body{margin:0;background:#ffffff}.wrap{max-width:1450px;margin:auto;padding:28px 18px 60px}h1{font-size:clamp(25px,4vw,38px);margin:0 0 8px}p{color:#6b6065;margin:0 0 24px}.layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(330px,.85fr);gap:22px;align-items:start}.panel{background:white;border:1px solid #dfb6c6;border-radius:20px;padding:20px;box-shadow:0 8px 24px #45212c0b}.preview{position:sticky;top:15px}.photo{position:relative;max-width:820px;margin:auto;aspect-ratio:1;overflow:hidden}.photo>img{width:100%;height:100%;object-fit:cover}.print{position:absolute;left:17%;width:66%;top:20%;height:38%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;pointer-events:none}.print .name{font-size:clamp(28px,4.6vw,68px);line-height:1.1;text-align:center;overflow-wrap:anywhere;max-width:100%;}.motif{display:flex;align-items:center;justify-content:center;width:100%;gap:6px;height:48px}.motif img.icon{width:50px;height:50px;object-fit:contain}.motif img.sep{width:100%;height:100%;object-fit:contain}.motif img.icon{position:absolute;width:70px;height:70px;object-fit:contain}.motif{position:relative;height:78px}.section{margin:0 0 22px}.section h2{font-size:16px;margin:0 0 10px}.choices{display:flex;gap:7px;flex-wrap:wrap}button,select,input{font:inherit}button{cursor:pointer;border:1px solid #e4d8da;background:#fff;border-radius:10px;padding:9px 12px;color:#30252a}button.active{border-color:#dfb6c6;background:#dfb6c6;box-shadow:inset 0 0 0 1px #dfb6c6}.color-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.color-tile{padding:5px;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:11px;min-width:0}.color-tile img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:7px}.color-tile span{text-align:center;overflow-wrap:anywhere}.font-choice{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:72px;flex:1 1 42%}.font-choice .sample{font-size:25px;line-height:1.15}.font-choice small{font:12px system-ui,sans-serif}.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.tile{display:flex;flex-direction:column;align-items:center;gap:5px;min-height:87px;font-size:11px;padding:9px 3px}.tile img{width:70px;height:70px;object-fit:contain}.tile .line{width:100%;height:28px;object-fit:contain}.tile span{overflow-wrap:anywhere;text-align:center}.field{width:100%;border:1px solid #ddd1d5;border-radius:10px;padding:12px}.muted{font-size:12px;color:#796e72}.action{background:#dfb6c6;color:#fff;border:0;padding:12px 16px}.summary{font-size:13px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}.note{font-size:12px;margin-top:12px}.preview h2{margin:0 0 12px;font-size:17px}@media(max-width:480px){.color-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:760px){.layout{grid-template-columns:1fr}.preview{position:static}.tiles{grid-template-columns:repeat(4,1fr)}.print .name{font-size:clamp(26px,7vw,52px)}}
-button:hover{border-color:#dfb6c6;background:#dfb6c6}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #dfb6c6;outline-offset:2px}::selection{background:#dfb6c6;color:#292328}input:focus{border-color:#dfb6c6}.action:hover{background:#dfb6c6}
-/* Separate Schriftvorschauen für den optionalen Wunschtext */
-@font-face{font-family:QuicksandWish;src:url('https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Quicksand-VariableFont_wght.ttf');font-weight:300 700}
-@font-face{font-family:HandwritingWish;src:url('https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Handwriting_Font_1.otf')}
-@font-face{font-family:LittleAppleWish;src:url('https://cdn.shopify.com/s/files/1/0761/4932/6151/files/LittleApple_Bold.otf')}
-@font-face{font-family:UbuntuWish;src:url('https://cdn.shopify.com/s/files/1/0761/4932/6151/files/ubuntu.ttf')}
-@font-face{font-family:PoppinsWish;src:url('https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Poppins-Medium.ttf')}
-@font-face{font-family:BarlowWish;src:url('https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Barlow-Condensed-600.ttf')}
-@font-face{font-family:BebasWish;src:url('https://cdn.shopify.com/s/files/1/0761/4932/6151/files/BebasNeue.ttf')}
-@font-face{font-family:RubikWish;src:url('https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Rubik-VariableFont_wght.ttf');font-weight:300 700}
-.print .wish-text{font-size:clamp(12px,2vw,25px);font-weight:400;line-height:1.2;text-align:center;max-width:100%;overflow-wrap:anywhere;min-height:0;white-space:pre-wrap}
-.print .wish-text:empty{display:none}
-.wish-help{font-size:12px;color:#796e72;margin:7px 0 12px}
-.wish-font-choice{min-width:0}
-.wish-font-choice .sample{font-size:22px;overflow-wrap:anywhere}
-@media(max-width:760px){.print .wish-text{font-size:clamp(11px,3vw,21px)}}
 
-.brand-header{display:flex;justify-content:center;align-items:center;margin:0 0 22px}.brand-logo{display:block;width:min(300px,75vw);height:auto;object-fit:contain}
-</style></head><body><main class="wrap"><div class="layout"><section class="panel preview"><h2>Deine Live-Vorschau</h2><div class="photo" id="capture"><img id="apron" alt="Schürze"><div class="print" id="print"><div class="name" id="previewName"></div><div class="motif"><img class="sep" id="separator"><img class="icon" id="motif"></div><div class="wish-text" id="previewWish"></div></div></div><p class="note">Unverbindliche Gestaltungsvorschau. Druckposition und Größe können beim fertigen Produkt abweichen.</p></section><section class="panel"><div class="section"><h2>1. Schürzenfarbe</h2><div id="colors" class="color-grid"></div></div><div class="section"><h2>2. Dein Name</h2><input id="name" class="field" value="Lieblingskoch" maxlength="28" placeholder="Dein Name"></div><div class="section"><h2>3. Schriftart</h2><div class="choices" id="fonts"></div></div><div class="section"><h2>4. Druckfarbe</h2><div class="choices" id="inks"><button data-v="weiss">Weiß</button><button data-v="schwarz">Schwarz</button></div></div><div class="section"><h2>5. Dein Icon (optional)</h2><div class="tiles" id="icons"></div></div><div class="section"><h2>6. Trennlinie (optional)</h2><div class="tiles" id="lines"></div></div><div class="section"><h2>7. Dein Wunschtext (optional)</h2><input id="wish" class="field" maxlength="60" placeholder="Optionaler Text unter Icon und Trennlinie"><p class="wish-help">Bleibt leer, wenn kein zusätzlicher Wunschtext gewünscht ist.</p><h2>Schriftart für deinen Wunschtext</h2><div class="choices" id="wishFonts"></div></div><div class="section"><h2>Deine Auswahl</h2><div id="summary" class="summary"></div><button id="copy">Für Etsy kopieren</button></div></section></div></main><script>
-const PHOTO_FILES={"sage": "Personalisierungsvorschau_name_sage_566cd23d-fcfa-4bb5-92ab-48a5bf8894c3.jpg", "rose": "Personalisierungsvorschau_name_rose_377262cc-1b72-4117-a943-7a57bf4ffc6a.jpg", "pink": "Personalisierungsvorschau_name_pink_0ddb169e-17c4-443e-a012-c9e80fb1c47a.jpg", "burgundy": "Personalisierungsvorschau_name_burgundy_a4284192-ebe2-433a-ad13-63b4af3cd1e9.jpg", "hotpink": "Personalisierungsvorschau_name_hotpink_3938ce30-f860-41e3-b61e-8e0fd889d534.jpg", "sunflower": "Personalisierungsvorschau_name_sunflower_036619a5-225f-4331-832c-23ff9b1e373c.jpg", "bluedenim": "Personalisierungsvorschau_name_bluedenim_2f9475d9-2c9e-49ab-b001-a0c615f4b6a9.jpg", "latte": "Personalisierungsvorschau_name_latte_98e8619c-ecab-45ff-ae68-e9fe6b6e1378.jpg", "natural": "Personalisierungsvorschau_name_natural_c06b0d48-33db-4722-9571-cffde5816174.jpg", "lemon": "Personalisierungsvorschau_name_lemon_030dd510-f2f5-486a-b178-e4ef2b0e9e33.jpg", "royal": "Personalisierungsvorschau_name_royal_6a78e35c-faa5-4a4b-b948-2951647bed9c.jpg", "rot": "Personalisierungsvorschau_name_rot_ea7964a0-4e4e-4e97-879f-0420e6a21b0a.jpg", "rich violet": "Personalisierungsvorschau_name_rich_violet_81584eb9-9c5d-4045-a3b9-f2ca632490bc.jpg", "aubergine": "Personalisierungsvorschau_name_aubergine_8b27b71d-f245-456b-868c-ce9cc4162d0a.jpg", "black": "Personalisierungsvorschau_name_black_fad56904-935d-4dbe-87dc-17db45279075.jpg", "emerald": "Personalisierungsvorschau_name_emerald_67f1af9e-8b21-4532-98ab-d95890ad1dea.jpg", "erdbeerrot": "Personalisierungsvorschau_name_erdbeerrot_29330070-e1f4-4d81-a5b2-ffad643d05d7.jpg", "charcoal": "Personalisierungsvorschau_name_charcoal_5d8f60e9-d9ac-452e-b417-7acb7b3db8ca.jpg", "duckegg": "Personalisierungsvorschau_name_duckegg_e6de343a-f551-4dc9-aafc-afadaf95001a.jpg", "lime": "Personalisierungsvorschau_name_lime_20025a99-7e21-4763-9af1-add3c9febb0d.jpg"};const ICONS=["Ohne", "Backutensilien", "Besteck", "Cupcake", "Cupcake_Erdbeere", "Cupcake_Kirsche", "Feuer", "Grillbesteck", "Herz", "Kochmuetze", "Krone", "Rakete", "Stern", "Topf", "Wein"],LINES=["Linie", "Ranke", "Schnoerkel", "Scribble", "Welle", "Blaetter", "Brush", "Dots", "Kingsline"],COLORS=["sage", "rose", "pink", "burgundy", "hotpink", "sunflower", "bluedenim", "latte", "natural", "lemon", "royal", "rot", "rich violet", "aubergine", "black", "emerald", "erdbeerrot", "charcoal", "duckegg", "lime"];let state={color:'black',name:'Lieblingskoch',font:'Wonderful',ink:'weiss',icon:'Cupcake',line:'Ranke',wish:'',wishFont:'QuicksandWish'};const $=id=>document.getElementById(id);const asset=n=> 'https://cdn.shopify.com/s/files/1/0761/4932/6151/files/'+encodeURIComponent(n);const photo=c=>asset(PHOTO_FILES[c]);const display=n=>asset(n.replace('.png','_display.png'));const fontNames={GetShow:'Schriftart 1',Mama:'Schriftart 2',Wonderful:'Schriftart 3',Amatic:'Schriftart 4',Scribblefun:'Schriftart 5',Jersey:'Schriftart 6',Veneer:'Schriftart 7',Wintersnow:'Schriftart 8'};const wishFontNames={QuicksandWish:'Schriftart Wunschtext 1',HandwritingWish:'Schriftart Wunschtext 2',LittleAppleWish:'Schriftart Wunschtext 3',UbuntuWish:'Schriftart Wunschtext 4',PoppinsWish:'Schriftart Wunschtext 5',BarlowWish:'Schriftart Wunschtext 6',BebasWish:'Schriftart Wunschtext 7',RubikWish:'Schriftart Wunschtext 8'};const iconSrc=v=>v==='Cupcake_Erdbeere'||v==='Cupcake_Kirsche'?asset(v+'.png'):display(v+'_'+state.ink+'.png');
-function choose(id,values,make,handler){$(id).innerHTML='';values.forEach(v=>{const b=document.createElement('button');b.type='button';b.className=(state[id==='fonts'?'font':id==='wishFonts'?'wishFont':id==='inks'?'ink':id==='icons'?'icon':'line']===v?'active ':'')+(id==='icons'||id==='lines'?'tile':'');make(b,v);b.onclick=()=>{handler(v);render()};$(id).append(b)})}
-function render(){ $('apron').src=photo(state.color);$('previewName').textContent=state.name||'Dein Text';$('previewName').style.fontFamily=state.font;$('previewWish').textContent=state.wish;$('previewWish').style.fontFamily=state.wishFont;$('previewWish').style.fontWeight=(state.wishFont==='QuicksandWish'||state.wishFont==='RubikWish')?'300':'400';$('print').style.color=state.ink==='weiss'?'#fff':'#111';$('motif').style.display=state.icon==='Ohne'?'none':'block';if(state.icon!=='Ohne')$('motif').src=iconSrc(state.icon);$('separator').style.display=state.line==='Ohne'?'none':'block';if(state.line!=='Ohne')$('separator').src=display(state.line+'_'+state.ink+'.png');document.querySelector('.motif').style.display=(state.icon==='Ohne'&&state.line==='Ohne')?'none':'flex'
-choose('fonts',Object.keys(fontNames),(b,v)=>{b.classList.add('font-choice');let sample=document.createElement('span');sample.className='sample';sample.style.fontFamily=v;sample.textContent='Dein Name';let label=document.createElement('small');label.textContent=fontNames[v];b.append(sample,label)},v=>state.font=v);choose('wishFonts',Object.keys(wishFontNames),(b,v)=>{b.classList.add('font-choice','wish-font-choice');let sample=document.createElement('span');sample.className='sample';sample.style.fontFamily=v;sample.style.fontWeight=(v==='QuicksandWish'||v==='RubikWish')?'300':'400';sample.textContent='Dein Wunschtext';let label=document.createElement('small');label.textContent=wishFontNames[v];b.append(sample,label)},v=>state.wishFont=v);choose('inks',['weiss','schwarz'],(b,v)=>b.textContent=v==='weiss'?'Weiß':'Schwarz',v=>state.ink=v);choose('icons',ICONS,(b,v)=>{if(v!=='Ohne'){let im=document.createElement('img');im.src=(v==='Cupcake_Erdbeere'||v==='Cupcake_Kirsche')?asset(v+'.png'):display(v+'_schwarz.png');b.append(im);}let s=document.createElement('span');s.textContent=v==='Cupcake_Erdbeere'?'Cupcake Erdbeere':v==='Cupcake_Kirsche'?'Cupcake Kirsche':v;b.append(s)},v=>state.icon=v);choose('lines',['Ohne',...LINES],(b,v)=>{if(v!=='Ohne'){let im=document.createElement('img');im.className='line';im.src=display(v+'_schwarz.png');b.append(im)}let s=document.createElement('span');s.textContent=v==='Schnoerkel'?'Schnörkel':v==='Blaetter'?'Blätter':v;b.append(s)},v=>state.line=v);$('summary').textContent=`Schürzenfarbe: ${state.color}
-Text: ${state.name}
-Schrift: ${fontNames[state.font]}
-Druckfarbe: ${state.ink}
-Icon: ${state.icon==='Ohne'?'Kein Icon':state.icon}
-Trennlinie: ${state.line==='Ohne'?'Keine Trennlinie':state.line}
-Wunschtext: ${state.wish||'Kein Wunschtext'}
-Schriftart Wunschtext: ${state.wish?wishFontNames[state.wishFont]:'–'}`; $('copy').disabled=$('summary').textContent.length>300; $('copy').textContent=$('summary').textContent.length>300?'Über 300 Zeichen':'Für Etsy kopieren'}
-const colorLabels={black:'Schwarz',sage:'Salbeigrün',rose:'Altrosa',pink:'Pink',burgundy:'Bordeaux',hotpink:'Hot Pink',sunflower:'Sonnengelb',bluedenim:'Denimblau',latte:'Latte',natural:'Natur',lemon:'Zitronengelb',royal:'Royalblau',rot:'Rot','rich violet':'Violett',aubergine:'Aubergine',emerald:'Smaragdgrün',erdbeerrot:'Erdbeerrot',charcoal:'Anthrazit',duckegg:'Taubenblau',lime:'Limettengrün'};function renderColors(){$('colors').innerHTML='';COLORS.forEach(c=>{const b=document.createElement('button');b.type='button';b.className='color-tile'+(state.color===c?' active':'');b.setAttribute('aria-pressed',String(state.color===c));let img=document.createElement('img');img.src=photo(c);img.alt='Schürze in '+(colorLabels[c]||c);let label=document.createElement('span');label.textContent=colorLabels[c]||c;b.append(img,label);b.onclick=()=>{state.color=c;render()};$('colors').append(b)})}const originalRender=render;render=function(){originalRender();renderColors()};$('name').oninput=e=>{state.name=e.target.value;render()};$('wish').oninput=e=>{state.wish=e.target.value;render()};$('copy').onclick=async()=>{if($('summary').textContent.length>300){alert('Maximal 300 Zeichen für Etsy. Bitte kürze deinen Text.');return;}try{await navigator.clipboard.writeText($('summary').textContent);$('copy').textContent='Kopiert!'}catch(e){alert('Bitte Auswahl manuell kopieren.')}};
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schürzen-Konfigurator</title>
+
+<style>
+@font-face {
+  font-family: GetShow;
+  src: url("https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Get_Show.ttf");
+}
+@font-face {
+  font-family: Mama;
+  src: url("https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Mama.ttf");
+}
+@font-face {
+  font-family: Wonderful;
+  src: url("https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Stay_Wonderful_26d11ac1-acaf-43f5-b579-a17aeaaacc03.otf");
+}
+@font-face {
+  font-family: Amatic;
+  src: url("https://cdn.shopify.com/s/files/1/0761/4932/6151/files/AmaticSC-Bold.ttf");
+}
+@font-face {
+  font-family: Scribblefun;
+  src: url("https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Scribblefun.ttf");
+}
+@font-face {
+  font-family: Jersey;
+  src: url("https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Jersey_Distressed.otf");
+}
+@font-face {
+  font-family: Veneer;
+  src: url("https://cdn.shopify.com/s/files/1/0761/4932/6151/files/VeneerThree.ttf");
+}
+@font-face {
+  font-family: Wintersnow;
+  src: url("https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Wintersnow.otf");
+}
+@font-face {
+  font-family: QuicksandWish;
+  src: url("https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Quicksand-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: HandwritingWish;
+  src: url("https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Handwriting_Font_1.otf");
+}
+@font-face {
+  font-family: LittleAppleWish;
+  src: url("https://cdn.shopify.com/s/files/1/0761/4932/6151/files/LittleApple_Bold.otf");
+}
+@font-face {
+  font-family: UbuntuWish;
+  src: url("https://cdn.shopify.com/s/files/1/0761/4932/6151/files/ubuntu.ttf");
+}
+@font-face {
+  font-family: PoppinsWish;
+  src: url("https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Poppins-Medium.ttf");
+}
+@font-face {
+  font-family: BarlowWish;
+  src: url("https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Barlow-Condensed-600.ttf");
+}
+@font-face {
+  font-family: BebasWish;
+  src: url("https://cdn.shopify.com/s/files/1/0761/4932/6151/files/BebasNeue.ttf");
+}
+@font-face {
+  font-family: RubikWish;
+  src: url("https://cdn.shopify.com/s/files/1/0761/4932/6151/files/Rubik-VariableFont_wght.ttf");
+}
+
+:root {
+  font-family: Arial, sans-serif;
+  color: #292328;
+  background: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: white;
+}
+
+.wrap {
+  max-width: 1450px;
+  margin: auto;
+  padding: 18px 12px 60px;
+}
+
+/* VORSCHAU LINKS, EINSTELLUNGEN RECHTS */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.panel {
+  min-width: 0;
+  background: white;
+  border: 1px solid #dfb6c6;
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.preview {
+  position: sticky;
+  top: 10px;
+  align-self: start;
+}
+
+.preview h2 {
+  font-size: 17px;
+  margin: 0 0 12px;
+}
+
+.photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.photo > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.print {
+  position: absolute;
+  left: 17%;
+  width: 66%;
+  top: 20%;
+  height: 38%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  pointer-events: none;
+}
+
+.print .name {
+  font-size: clamp(16px, 4vw, 68px);
+  line-height: 1.1;
+  text-align: center;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+
+.motif {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 78px;
+}
+
+.motif img.sep {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.motif img.icon {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.print .wish-text {
+  font-size: clamp(11px, 2vw, 25px);
+  line-height: 1.2;
+  text-align: center;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.print .wish-text:empty {
+  display: none;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.section h2 {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid #e4d8da;
+  background: white;
+  border-radius: 10px;
+  padding: 9px 12px;
+  color: #30252a;
+}
+
+button.active {
+  border-color: #dfb6c6;
+  background: #dfb6c6;
+}
+
+button:hover {
+  border-color: #dfb6c6;
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.color-tile {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  min-width: 0;
+}
+
+.color-tile img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+.color-tile span {
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.font-choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 72px;
+  flex: 1 1 42%;
+  min-width: 0;
+}
+
+.font-choice .sample {
+  font-size: 24px;
+  line-height: 1.2;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.font-choice small {
+  font: 12px Arial, sans-serif;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-height: 87px;
+  font-size: 11px;
+  padding: 8px 3px;
+  min-width: 0;
+}
+
+.tile img {
+  width: 65px;
+  max-width: 100%;
+  height: 65px;
+  object-fit: contain;
+}
+
+.tile img.line {
+  width: 100%;
+  height: 28px;
+  object-fit: contain;
+}
+
+.tile span {
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+.field {
+  width: 100%;
+  border: 1px solid #ddd1d5;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.wish-help,
+.note {
+  font-size: 12px;
+  color: #796e72;
+  line-height: 1.5;
+}
+
+.note {
+  margin-top: 12px;
+}
+
+.wish-help {
+  margin: 7px 0 12px;
+}
+
+.summary {
+  font-size: 13px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin-bottom: 12px;
+}
+
+#copy {
+  background: #dfb6c6;
+  border-color: #dfb6c6;
+  color: #292328;
+  font-weight: bold;
+}
+
+/* AUCH IN SCHMALEN SHOPIFY-EINBETTUNGEN ZWEISPALTIG */
+@media (max-width: 760px) {
+  .wrap {
+    padding: 8px 5px 30px;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
+    gap: 8px;
+  }
+
+  .panel {
+    padding: 8px;
+    border-radius: 12px;
+  }
+
+  .preview {
+    position: sticky;
+    top: 6px;
+  }
+
+  .preview h2 {
+    font-size: 13px;
+  }
+
+  .color-grid,
+  .tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .print .name {
+    font-size: clamp(12px, 3.5vw, 32px);
+  }
+
+  .print .wish-text {
+    font-size: clamp(9px, 2.4vw, 19px);
+  }
+
+  .motif {
+    height: 42px;
+  }
+
+  .motif img.icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .section h2 {
+    font-size: 14px;
+  }
+
+  .font-choice .sample {
+    font-size: 19px;
+  }
+
+  .tile img {
+    width: 45px;
+    height: 45px;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="wrap">
+
+<div class="layout">
+
+  <!-- LINKE SPALTE: LIVE-VORSCHAU -->
+  <section class="panel preview">
+    <h2>Deine Live-Vorschau</h2>
+
+    <div class="photo">
+      <img id="apron" alt="Schürze">
+
+      <div class="print" id="print">
+        <div class="name" id="previewName"></div>
+
+        <div class="motif" id="motifArea">
+          <img class="sep" id="separator" alt="">
+          <img class="icon" id="motif" alt="">
+        </div>
+
+        <div class="wish-text" id="previewWish"></div>
+      </div>
+    </div>
+
+    <p class="note">
+      Unverbindliche Gestaltungsvorschau.
+      Druckposition und Größe können beim fertigen Produkt abweichen.
+    </p>
+  </section>
+
+  <!-- RECHTE SPALTE: PERSONALISIERUNG -->
+  <section class="panel">
+
+    <div class="section">
+      <h2>1. Schürzenfarbe</h2>
+      <div id="colors" class="color-grid"></div>
+    </div>
+
+    <div class="section">
+      <h2>2. Dein Name</h2>
+      <input
+        id="name"
+        class="field"
+        value="Lieblingskoch"
+        maxlength="28"
+        placeholder="Dein Name"
+      >
+    </div>
+
+    <div class="section">
+      <h2>3. Schriftart</h2>
+      <div class="choices" id="fonts"></div>
+    </div>
+
+    <div class="section">
+      <h2>4. Druckfarbe</h2>
+      <div class="choices" id="inks"></div>
+    </div>
+
+    <div class="section">
+      <h2>5. Dein Icon (optional)</h2>
+      <div class="tiles" id="icons"></div>
+    </div>
+
+    <div class="section">
+      <h2>6. Trennlinie (optional)</h2>
+      <div class="tiles" id="lines"></div>
+    </div>
+
+    <div class="section">
+      <h2>7. Dein Wunschtext (optional)</h2>
+
+      <input
+        id="wish"
+        class="field"
+        maxlength="60"
+        placeholder="Optionaler Wunschtext"
+      >
+
+      <p class="wish-help">
+        Leer lassen, wenn kein Wunschtext gewünscht ist.
+      </p>
+
+      <h2>Schriftart für deinen Wunschtext</h2>
+      <div class="choices" id="wishFonts"></div>
+    </div>
+
+    <div class="section">
+      <h2>Deine Auswahl</h2>
+      <div id="summary" class="summary"></div>
+      <button id="copy" type="button">
+        Für Etsy kopieren
+      </button>
+    </div>
+
+  </section>
+</div>
+</main>
+
+<script>
+const BASE =
+  "https://cdn.shopify.com/s/files/1/0761/4932/6151/files/";
+
+const PHOTO_FILES = {
+  sage: "Personalisierungsvorschau_name_sage_566cd23d-fcfa-4bb5-92ab-48a5bf8894c3.jpg",
+  rose: "Personalisierungsvorschau_name_rose_377262cc-1b72-4117-a943-7a57bf4ffc6a.jpg",
+  pink: "Personalisierungsvorschau_name_pink_0ddb169e-17c4-443e-a012-c9e80fb1c47a.jpg",
+  burgundy: "Personalisierungsvorschau_name_burgundy_a4284192-ebe2-433a-ad13-63b4af3cd1e9.jpg",
+  hotpink: "Personalisierungsvorschau_name_hotpink_3938ce30-f860-41e3-b61e-8e0fd889d534.jpg",
+  sunflower: "Personalisierungsvorschau_name_sunflower_036619a5-225f-4331-832c-23ff9b1e373c.jpg",
+  bluedenim: "Personalisierungsvorschau_name_bluedenim_2f9475d9-2c9e-49ab-b001-a0c615f4b6a9.jpg",
+  latte: "Personalisierungsvorschau_name_latte_98e8619c-ecab-45ff-ae68-e9fe6b6e1378.jpg",
+  natural: "Personalisierungsvorschau_name_natural_c06b0d48-33db-4722-9571-cffde5816174.jpg",
+  lemon: "Personalisierungsvorschau_name_lemon_030dd510-f2f5-486a-b178-e4ef2b0e9e33.jpg",
+  royal: "Personalisierungsvorschau_name_royal_6a78e35c-faa5-4a4b-b948-2951647bed9c.jpg",
+  rot: "Personalisierungsvorschau_name_rot_ea7964a0-4e4e-4e97-879f-0420e6a21b0a.jpg",
+  "rich violet": "Personalisierungsvorschau_name_rich_violet_81584eb9-9c5d-4045-a3b9-f2ca632490bc.jpg",
+  aubergine: "Personalisierungsvorschau_name_aubergine_8b27b71d-f245-456b-868c-ce9cc4162d0a.jpg",
+  black: "Personalisierungsvorschau_name_black_fad56904-935d-4dbe-87dc-17db45279075.jpg",
+  emerald: "Personalisierungsvorschau_name_emerald_67f1af9e-8b21-4532-98ab-d95890ad1dea.jpg",
+  erdbeerrot: "Personalisierungsvorschau_name_erdbeerrot_29330070-e1f4-4d81-a5b2-ffad643d05d7.jpg",
+  charcoal: "Personalisierungsvorschau_name_charcoal_5d8f60e9-d9ac-452e-b417-7acb7b3db8ca.jpg",
+  duckegg: "Personalisierungsvorschau_name_duckegg_e6de343a-f551-4dc9-aafc-afadaf95001a.jpg",
+  lime: "Personalisierungsvorschau_name_lime_20025a99-7e21-4763-9af1-add3c9febb0d.jpg"
+};
+
+const COLOR_LABELS = {
+  sage: "Salbeigrün",
+  rose: "Altrosa",
+  pink: "Pink",
+  burgundy: "Bordeaux",
+  hotpink: "Hot Pink",
+  sunflower: "Sonnengelb",
+  bluedenim: "Denimblau",
+  latte: "Latte",
+  natural: "Natur",
+  lemon: "Zitronengelb",
+  royal: "Royalblau",
+  rot: "Rot",
+  "rich violet": "Violett",
+  aubergine: "Aubergine",
+  black: "Schwarz",
+  emerald: "Smaragdgrün",
+  erdbeerrot: "Erdbeerrot",
+  charcoal: "Anthrazit",
+  duckegg: "Taubenblau",
+  lime: "Limettengrün"
+};
+
+const ICONS = [
+  "Ohne",
+  "Backutensilien",
+  "Besteck",
+  "Cupcake",
+  "Cupcake_Erdbeere",
+  "Cupcake_Kirsche",
+  "Feuer",
+  "Grillbesteck",
+  "Herz",
+  "Kochmuetze",
+  "Krone",
+  "Rakete",
+  "Stern",
+  "Topf",
+  "Wein"
+];
+
+const LINES = [
+  "Ohne",
+  "Linie",
+  "Ranke",
+  "Schnoerkel",
+  "Scribble",
+  "Welle",
+  "Blaetter",
+  "Brush",
+  "Dots",
+  "Kingsline"
+];
+
+const NAME_FONTS = {
+  GetShow: "Schriftart 1",
+  Mama: "Schriftart 2",
+  Wonderful: "Schriftart 3",
+  Amatic: "Schriftart 4",
+  Scribblefun: "Schriftart 5",
+  Jersey: "Schriftart 6",
+  Veneer: "Schriftart 7",
+  Wintersnow: "Schriftart 8"
+};
+
+const WISH_FONTS = {
+  QuicksandWish: "Schriftart Wunschtext 1",
+  HandwritingWish: "Schriftart Wunschtext 2",
+  LittleAppleWish: "Schriftart Wunschtext 3",
+  UbuntuWish: "Schriftart Wunschtext 4",
+  PoppinsWish: "Schriftart Wunschtext 5",
+  BarlowWish: "Schriftart Wunschtext 6",
+  BebasWish: "Schriftart Wunschtext 7",
+  RubikWish: "Schriftart Wunschtext 8"
+};
+
+const state = {
+  color: "black",
+  name: "Lieblingskoch",
+  font: "Wonderful",
+  ink: "weiss",
+  icon: "Cupcake",
+  line: "Ranke",
+  wish: "",
+  wishFont: "QuicksandWish"
+};
+
+const $ = id => document.getElementById(id);
+
+function asset(filename) {
+  return BASE + encodeURIComponent(filename);
+}
+
+function photo(color) {
+  return asset(PHOTO_FILES[color]);
+}
+
+function display(filename) {
+  return asset(filename.replace(".png", "_display.png"));
+}
+
+function iconSrc(icon, ink) {
+  if (
+    icon === "Cupcake_Erdbeere" ||
+    icon === "Cupcake_Kirsche"
+  ) {
+    return asset(icon + ".png");
+  }
+
+  return display(icon + "_" + ink + ".png");
+}
+
+function prettyLabel(value) {
+  const labels = {
+    Cupcake_Erdbeere: "Cupcake Erdbeere",
+    Cupcake_Kirsche: "Cupcake Kirsche",
+    Kochmuetze: "Kochmütze",
+    Schnoerkel: "Schnörkel",
+    Blaetter: "Blätter"
+  };
+
+  return labels[value] || value;
+}
+
+function makeButton(container, active, onClick) {
+  const button = document.createElement("button");
+  button.type = "button";
+
+  if (active) {
+    button.classList.add("active");
+  }
+
+  button.onclick = onClick;
+  container.appendChild(button);
+
+  return button;
+}
+
+function renderColors() {
+  const container = $("colors");
+  container.innerHTML = "";
+
+  Object.keys(PHOTO_FILES).forEach(color => {
+    const button = makeButton(
+      container,
+      state.color === color,
+      () => {
+        state.color = color;
+        render();
+      }
+    );
+
+    button.classList.add("color-tile");
+
+    const image = document.createElement("img");
+    image.src = photo(color);
+    image.alt = "Schürze " + COLOR_LABELS[color];
+
+    const label = document.createElement("span");
+    label.textContent = COLOR_LABELS[color];
+
+    button.append(image, label);
+  });
+}
+
+function renderFonts() {
+  const container = $("fonts");
+  container.innerHTML = "";
+
+  Object.entries(NAME_FONTS).forEach(([font, label]) => {
+    const button = makeButton(
+      container,
+      state.font === font,
+      () => {
+        state.font = font;
+        render();
+      }
+    );
+
+    button.classList.add("font-choice");
+
+    const sample = document.createElement("span");
+    sample.className = "sample";
+    sample.style.fontFamily = font;
+    sample.textContent = "Dein Name";
+
+    const small = document.createElement("small");
+    small.textContent = label;
+
+    button.append(sample, small);
+  });
+}
+
+function renderInks() {
+  const container = $("inks");
+  container.innerHTML = "";
+
+  [
+    ["weiss", "Weiß"],
+    ["schwarz", "Schwarz"]
+  ].forEach(([ink, label]) => {
+    const button = makeButton(
+      container,
+      state.ink === ink,
+      () => {
+        state.ink = ink;
+        render();
+      }
+    );
+
+    button.textContent = label;
+  });
+}
+
+function renderIcons() {
+  const container = $("icons");
+  container.innerHTML = "";
+
+  ICONS.forEach(icon => {
+    const button = makeButton(
+      container,
+      state.icon === icon,
+      () => {
+        state.icon = icon;
+        render();
+      }
+    );
+
+    button.classList.add("tile");
+
+    if (icon !== "Ohne") {
+      const image = document.createElement("img");
+
+      image.src = iconSrc(icon, state.ink);
+      image.alt = prettyLabel(icon);
+
+      button.appendChild(image);
+    }
+
+    const label = document.createElement("span");
+    label.textContent = prettyLabel(icon);
+    button.appendChild(label);
+  });
+}
+
+function renderLines() {
+  const container = $("lines");
+  container.innerHTML = "";
+
+  LINES.forEach(line => {
+    const button = makeButton(
+      container,
+      state.line === line,
+      () => {
+        state.line = line;
+        render();
+      }
+    );
+
+    button.classList.add("tile");
+
+    if (line !== "Ohne") {
+      const image = document.createElement("img");
+
+      image.src = display(
+        line + "_" + state.ink + ".png"
+      );
+
+      image.alt = prettyLabel(line);
+      image.className = "line";
+
+      button.appendChild(image);
+    }
+
+    const label = document.createElement("span");
+    label.textContent = prettyLabel(line);
+    button.appendChild(label);
+  });
+}
+
+function renderWishFonts() {
+  const container = $("wishFonts");
+  container.innerHTML = "";
+
+  Object.entries(WISH_FONTS).forEach(([font, label]) => {
+    const button = makeButton(
+      container,
+      state.wishFont === font,
+      () => {
+        state.wishFont = font;
+        render();
+      }
+    );
+
+    button.classList.add("font-choice");
+
+    const sample = document.createElement("span");
+    sample.className = "sample";
+    sample.style.fontFamily = font;
+    sample.textContent = "Dein Wunschtext";
+
+    const small = document.createElement("small");
+    small.textContent = label;
+
+    button.append(sample, small);
+  });
+}
+
+function renderPreview() {
+  $("apron").src = photo(state.color);
+
+  $("previewName").textContent =
+    state.name || "Dein Name";
+
+  $("previewName").style.fontFamily = state.font;
+
+  $("previewWish").textContent = state.wish;
+  $("previewWish").style.fontFamily = state.wishFont;
+
+  $("print").style.color =
+    state.ink === "weiss" ? "#ffffff" : "#111111";
+
+  const motif = $("motif");
+  const separator = $("separator");
+
+  motif.style.display =
+    state.icon === "Ohne" ? "none" : "block";
+
+  if (state.icon !== "Ohne") {
+    motif.src = iconSrc(state.icon, state.ink);
+  }
+
+  separator.style.display =
+    state.line === "Ohne" ? "none" : "block";
+
+  if (state.line !== "Ohne") {
+    separator.src = display(
+      state.line + "_" + state.ink + ".png"
+    );
+  }
+
+  $("motifArea").style.display =
+    state.icon === "Ohne" && state.line === "Ohne"
+      ? "none"
+      : "flex";
+}
+
+function getSummary() {
+  return [
+    "Schürzenfarbe: " + COLOR_LABELS[state.color],
+    "Name: " + state.name,
+    "Schrift: " + NAME_FONTS[state.font],
+    "Druckfarbe: " +
+      (state.ink === "weiss" ? "Weiß" : "Schwarz"),
+    "Icon: " +
+      (state.icon === "Ohne"
+        ? "Kein Icon"
+        : prettyLabel(state.icon)),
+    "Trennlinie: " +
+      (state.line === "Ohne"
+        ? "Keine"
+        : prettyLabel(state.line)),
+    "Wunschtext: " +
+      (state.wish || "Kein Wunschtext"),
+    "Schriftart Wunschtext: " +
+      (state.wish
+        ? WISH_FONTS[state.wishFont]
+        : "–")
+  ].join("\n");
+}
+
+function renderSummary() {
+  const summary = getSummary();
+
+  $("summary").textContent = summary;
+
+  $("copy").disabled = summary.length > 300;
+
+  $("copy").textContent =
+    summary.length > 300
+      ? "Über 300 Zeichen – bitte kürzen"
+      : "Für Etsy kopieren";
+}
+
+function render() {
+  renderPreview();
+  renderColors();
+  renderFonts();
+  renderInks();
+  renderIcons();
+  renderLines();
+  renderWishFonts();
+  renderSummary();
+}
+
+$("name").addEventListener("input", event => {
+  state.name = event.target.value;
+  renderPreview();
+  renderSummary();
+});
+
+$("wish").addEventListener("input", event => {
+  state.wish = event.target.value;
+  renderPreview();
+  renderSummary();
+});
+
+$("copy").addEventListener("click", async () => {
+  const text = getSummary();
+
+  if (text.length > 300) {
+    alert("Bitte kürze deine Angaben auf maximal 300 Zeichen.");
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(text);
+    $("copy").textContent = "Kopiert!";
+  } catch (error) {
+    const area = document.createElement("textarea");
+    area.value = text;
+    document.body.appendChild(area);
+    area.select();
+
+    const copied = document.execCommand("copy");
+    area.remove();
+
+    if (copied) {
+      $("copy").textContent = "Kopiert!";
+    } else {
+      alert(
+        "Automatisches Kopieren nicht möglich. " +
+        "Bitte kopiere den Text unter 'Deine Auswahl' manuell."
+      );
+    }
+  }
+});
+
 render();
-</script></body></html>
+</script>
+</body>
+</html>
