@@ -437,6 +437,18 @@ input:focus-visible {
     padding: 7px 5px;
   }
 }
+
+/* Weiße Icons und Trennlinien in der Auswahl sichtbar machen */
+.tile:has(img[src*="_weiss_"]) {
+  background-color: #777777;
+  color: #ffffff;
+}
+
+/* Ausgewählte weiße Motive weiterhin markieren */
+.tile.active:has(img[src*="_weiss_"]) {
+  border-color: #dfb6c6;
+}
+
 </style>
 </head>
 
